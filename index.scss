@@ -1,0 +1,257 @@
+$v-dark-magenta: hsl(300, 43%, 22%);
+$soft-pink: hsl(333, 80%, 67%);
+$dark-grayish-magenta: hsl(303, 10%, 53%);
+$light-grayish-magenta: hsl(300, 24%, 96%);
+$white: hsl(0, 0%, 100%);
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  font-family: 'Spartan', sans-serif;
+  font-size: 15px;
+  line-height: normal;
+  color: $v-dark-magenta;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  @media(min-width: 768px) {
+    height: 100vh;
+  }
+}
+
+.background-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .mobile {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  @media(min-width: 768px) {
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.background-bottom {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .mobile {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  @media(min-width: 768px) {
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+main {
+  text-align: center;
+  margin: 4rem 1rem;
+
+  @media(min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 7rem;
+    row-gap: 3rem;
+    width: calc(100% - 16rem);
+  }
+
+  section.text {
+    @media(min-width: 768px) {
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 1rem 2rem;
+
+      @media(min-width: 768px) {
+        font-size: 3rem;
+        margin: 0 0 2rem;
+      }
+    }
+
+    p {
+      line-height: 1.5rem;
+    }
+  }
+
+  section.ratings {
+    margin: 2rem 0;
+
+    @media(min-width: 768px) {
+      width: 37rem;
+    }
+
+    div.rated {
+      background-color: $light-grayish-magenta;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+
+      @media(min-width: 768px) {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        width: max-content;
+        padding: 1.25rem 2rem;
+        width: 31rem;
+
+        &:nth-of-type(2) {
+          margin-left: 3rem;
+        }
+
+        &:nth-of-type(3) {
+          margin-left: 6rem;
+        }
+      }
+
+      div.stars {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        width: 8rem;
+        height: 1rem;
+        margin: 0 auto 1rem;
+
+        @media(min-width: 768px) {
+          margin: 0 2rem 0 0;
+        }
+      }
+    }
+  }
+
+  section.reviews {
+    @media(min-width: 768px) {
+      grid-column: 1/3;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      height: 18rem;
+    }
+
+    div.review {
+      background-color: $v-dark-magenta;
+      color: $white;
+      border-radius: 0.5rem;
+      padding: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: left;
+
+      @media(min-width: 768px) {
+        height: 16rem;
+        margin-bottom: 0;
+
+        &:nth-of-type(2) {
+          margin-top: 1rem;
+        }
+
+        &:nth-of-type(3) {
+          margin-top: 2rem;
+        }
+      }
+
+      div.reviewer {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        grid-template-rows: repeat(2, 1.25rem);
+        column-gap: 1rem;
+        row-gap: 0.25rem;
+        margin-bottom: 2rem;
+
+        img {
+          grid-row: 1/3;
+          border-radius: 50%;
+          height: 100%;
+        }
+
+        h2 {
+          grid-row: 1/2;
+          grid-column: 2/3;
+          font-size: 1rem;
+          font-weight: 700;
+          line-height: 1.25rem;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+        }
+
+        p {
+          color: $soft-pink;
+          line-height: 1.25rem;
+
+        }
+      }
+
+      p {
+        font-size: 13px;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
+
+.attribution {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 2rem);
+  font-size: 11px;
+  text-align: center;
+  padding: 1rem 0;
+
+  a {
+    color: $soft-pink;
+  }
+}
